@@ -18,13 +18,13 @@ class RestaurantRepo:
         try:
             self.db.add(restaurant)
             self.db.commit()
+            self.db.refresh(restaurant)
         except Exception as e:
             self.db.rollback()
             raise ValueError("Internal Error")
         
     def get_restaurant_by_location(self, location):
         restaurant = self.db.query(Restaurant).filter(Restaurant.location ==location).all()
-        
         return restaurant
     
     def get_restaurant_by_name(self, name):

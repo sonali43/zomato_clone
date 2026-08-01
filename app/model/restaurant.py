@@ -3,6 +3,7 @@ from app.db.database import Base
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import relationship
 from sqlalchemy import Integer,String,Date
+from app.model.food_model import Food
 
 class Restaurant(Base):
     __tablename__ ="restaurant"
@@ -31,5 +32,6 @@ class Restaurant(Base):
     
     foods : Mapped[list["Food"]] = relationship(
         "Food", 
-        back_populates="restaurant")
+        back_populates="restaurant",
+        cascade="all, delete-orphan")
     
