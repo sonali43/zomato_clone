@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Depends
 from app.dependency.service_dependency import get_restaurant_service
+from app.service.restaurant_service import RestaurantService
 from app.schema.restaurant_schema import CreateRestaurantRequest
+
 
 router = APIRouter()
 
