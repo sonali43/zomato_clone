@@ -23,13 +23,17 @@ class RestaurantRepo:
             self.db.rollback()
             raise ValueError("Internal Error")
         
-    def get_restaurant_by_location(self, location):
+    def get_restaurant_by_location(self, location)-> list[Restaurant]:
         restaurant = self.db.query(Restaurant).filter(Restaurant.location ==location).all()
         return restaurant
     
-    def get_restaurant_by_name(self, name):
+    def get_restaurant_by_name(self, name)-> Restaurant:
         restaurant =self.db.query(Restaurant).filter(Restaurant.name == name).all()
         return restaurant
+    def get_restaurant_by_name(self, name):
+            restaurant =self.db.query(Restaurant).filter(Restaurant.name == name).all()
+            return restaurant
+    
     def get_restaurant_by_email(self, email):
         restaurant = self.db.query(Restaurant).filter(Restaurant.email == email).first()
         return restaurant
@@ -60,3 +64,9 @@ class RestaurantRepo:
         
         return "Record Deleted"
     
+    
+    
+    def get_restaurant_location_and_rating(self,location,rating):
+        
+        restaurant = self.db.query(Restaurant).filter(Restaurant.location== location,Restaurant.rating== rating).all()
+        return restaurant
