@@ -30,6 +30,9 @@ class Food(Base):
     created_at : Mapped[datetime] = mapped_column(
         Date, default=datetime.now
     )
+    is_available : Mapped[bool]=mapped_column(
+        default=True,nullable=True
+    )
     
     restaurant = relationship(
         "Restaurant",

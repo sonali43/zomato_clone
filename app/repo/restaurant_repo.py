@@ -1,5 +1,6 @@
 
 
+from app.model.food_modle import Food
 from app.model.restaurant import Restaurant
 from sqlalchemy.orm import Session
 
@@ -12,7 +13,7 @@ class RestaurantRepo:
         restaurant=Restaurant(
             email =email_input,
             name = name,
-            location = location
+            location = location 
         )
         
         try:
@@ -69,4 +70,13 @@ class RestaurantRepo:
     def get_restaurant_location_and_rating(self,location,rating):
         
         restaurant = self.db.query(Restaurant).filter(Restaurant.location== location,Restaurant.rating== rating).all()
+        return restaurant
+    
+    def get_restaurant_food_by_restaurant_id(self,restaurant_id):
+        restaurant = (
+            self.db.query(Restaurant)
+            .join(Food)
+            .filter(Restaurant.id == restaurant_id)
+            .all()
+        )
         return restaurant

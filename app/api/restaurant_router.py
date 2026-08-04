@@ -25,3 +25,10 @@ def get_restaurant_by_id(location:str,rating:int,
 def get_restaurant_by_name(name:str,restaurant_service:RestaurantService=Depends(get_restaurant_service)):
     return restaurant_service.get_restaurant_by_name(restaurant_name=name)
     
+@router.get("/get-restaurant-by-location and rating")
+def get_restaurant_by_location_and_rating(location:str,rating:int,restaurant_service:RestaurantService=Depends(get_restaurant_service)):
+    return restaurant_service.get_restaurant_by_location_and_rating(location=location,rating=rating)
+
+@router.get("/get-restaurant-food-by-name-and-location")
+def get_restaurant_food_by_name_and_location(name:str, location:str, restaurant_service:RestaurantService=Depends(get_restaurant_service)):
+    return restaurant_service.get_restaurant_food_by_name_and_location(name=name,location=location)

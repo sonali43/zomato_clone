@@ -3,7 +3,6 @@ from app.db.database import Base
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import relationship
 from sqlalchemy import Integer,String,Date
-from app.model.food_model import Food
 
 class Restaurant(Base):
     __tablename__ ="restaurant"
@@ -21,7 +20,7 @@ class Restaurant(Base):
         String(255)
     )
     rating : Mapped[int] = mapped_column(
-        Integer
+        Integer,nullable=True
     )
     created_at : Mapped[datetime] = mapped_column(
         Date, default=datetime.now
@@ -30,7 +29,7 @@ class Restaurant(Base):
         Date, default=datetime.now, onupdate=datetime.now
     )
     
-    foods : Mapped[list["Food"]] = relationship(
+    foods = relationship(
         "Food", 
         back_populates="restaurant",
         cascade="all, delete-orphan")

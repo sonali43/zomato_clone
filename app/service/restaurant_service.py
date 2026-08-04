@@ -6,13 +6,22 @@ class RestaurantService:
         self.repository: RestaurantRepo= repository
         
     def get_restaurant_by_location(self, location:str):
-        restaurannt = self.repository.get_restaurant_by_location(location)
+        restaurants = self.repository.get_restaurant_by_location(location)
         return restaurants
     
     def get_restaurant_by_location_and_rating(self, location:str,rating:int):
         restaurants = self.repository.get_restaurant_location_and_rating(location, rating)
-    
         return restaurants
+    
+    def get_restaurant_food_by_name_and_location(self,name:str,location:str):
+        restaurant_id = self.repository.get_restaurant_id_by_name_and_location(name,location)
+        if not restaurant_id:
+            raise ValueError("Restaurant not found")
+        restaurant_and_food= self.repository.get_restaurant_food_by_restaurant_id(restaurant_id)
+        if not restaurant_and_food:
+            raise ValueError("No food items for this restaurant")
+        return restaurant_and_food
+    
     def get_restaurant_by_name(self, restaurant_name:str):
         return self.repository.get_restaurant_by_name(restaurant_name)
     
@@ -26,8 +35,8 @@ class RestaurantService:
             location = restaurant_data.location
         )
         
-        def update_restaurant(self,restaurant_id, restaurant_data):
-            return
+    def update_restaurant(self,restaurant_id, restaurant_data):
+        return
         
-        def delete_restaurant(Self, restaurant_id):
-            return
+    def delete_restaurant(Self, restaurant_id):
+        return
