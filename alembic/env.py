@@ -1,10 +1,10 @@
 from logging.config import fileConfig
 from app.db.database import Base
-from app.model.user_model import User
-from app.model.food_model import Food
-from app.model.restaurant import Restaurant
+from app.model import *
+
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
+
 
 from alembic import context
 

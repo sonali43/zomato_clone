@@ -1,6 +1,6 @@
 
 
-from app.model.food_modle import Food
+from app.model.food_model import Food
 from app.model.restaurant import Restaurant
 from sqlalchemy.orm import Session
 

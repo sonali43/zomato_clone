@@ -38,3 +38,8 @@ class Food(Base):
         "Restaurant",
         back_populates="food",
         )
+    cartitem= relationship(
+        "CartItem",
+        back_populates="food",
+        cascade="all, delete-orphan"
+    )

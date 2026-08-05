@@ -2,9 +2,10 @@ from datetime import datetime,date,time
 from app.db.database import Base
 from sqlalchemy.orm import Mapped,mapped_column
 from sqlalchemy import Integer,String,Date
+from sqlalchemy.orm import relationship
 from datetime import datetime
 from sqlalchemy import Integer, String, DateTime
-from sqlalchemy.orm import Mapped,mapped_column
+
 
 class User(Base):
     __tablename__ = "users"
@@ -27,3 +28,9 @@ class User(Base):
     
     created_at : Mapped[datetime] =mapped_column(
         DateTime, default=datetime.now)
+    
+    cart=relationship(
+        "Cart",
+        back_populates="users",
+        cascade="all,delete-orphan"
+    )
