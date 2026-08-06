@@ -6,6 +6,7 @@ from app.model.food_model import Food
 from app.api.user_api import user_router
 from app.api.restaurant_router import router as restaurant_router
 from app.api.food_api import food_router
+from app.api.cart_api import cart_router
 
 
 app = FastAPI()
@@ -13,6 +14,7 @@ app = FastAPI()
 app.include_router(user_router)
 app.include_router(restaurant_router)
 app.include_router(food_router)
+app.include_router(cart_router)
 Base.metadata.create_all(bind=engine)
 
 @app.get("/")

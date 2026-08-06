@@ -29,7 +29,7 @@ class Restaurant(Base):
         Date, default=datetime.now, onupdate=datetime.now
     )
     
-    foods = relationship(
+    food = relationship(
         "Food", 
         back_populates="restaurant",
         cascade="all, delete-orphan")

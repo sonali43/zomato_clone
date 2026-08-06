@@ -1,7 +1,7 @@
 from datetime  import datetime, date,time
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import relationship
-from sqlalchemy import ForeignKey,Integer,Date
+from sqlalchemy import ForeignKey,Integer,Date,Float
 from app.db.database import Base
 
 class Cart(Base):
@@ -14,10 +14,13 @@ class Cart(Base):
         ForeignKey("users.id"),index=True
     )
     created_at :Mapped[datetime]=mapped_column(
-        Date, default=datetime.now()
+        Date, default=datetime.now
     )
     is_purchse: Mapped[bool]=mapped_column(
-        default=True,nullable=True
+        default=False,nullable=True
+    )
+    total_price:Mapped[float]=mapped_column(
+        Float,nullable=True
     )
     
     

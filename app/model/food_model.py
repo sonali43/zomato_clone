@@ -36,7 +36,7 @@ class Food(Base):
     
     restaurant = relationship(
         "Restaurant",
-        back_populates="food",
+        back_populates="food"
         )
     cartitem= relationship(
         "CartItem",
