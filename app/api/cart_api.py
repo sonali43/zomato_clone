@@ -7,7 +7,7 @@ from app.db.database import get_db
 cart_router = APIRouter(prefix="/cart", tags=["Cart"])
 
 @cart_router.post("/create_cart")
-def create_cart(create_cart:CreateCart,user_id:int, cartservice =Depends(get_cart_service)):
-    cart= cartservice.create_cart(create_cart,user_id)
+def create_cart(create_cart:CreateCart, cartservice =Depends(get_cart_service)):
+    cart= cartservice.create_cart(create_cart)
     return {"message":"cart created successfully","cart":cart}
 

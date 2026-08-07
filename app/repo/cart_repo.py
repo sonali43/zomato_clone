@@ -7,7 +7,7 @@ class CartRepository:
     def __init__(self,db_session:Session):
             self.db_session = db_session
             
-    def create_cart_repo(self,create_cart:CreateCart,user_id:int):
+    def create_cart_repo(self,create_cart:CreateCart):
        cart=Cart(
            user_id=create_cart.user_id,
            total_price=create_cart.total_price
