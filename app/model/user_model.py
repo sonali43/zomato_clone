@@ -34,3 +34,8 @@ class User(Base):
         back_populates="users",
         cascade="all,delete-orphan"
     )
+    
+    order = relationship(
+        "Order",
+        back_populates="users"
+    )
