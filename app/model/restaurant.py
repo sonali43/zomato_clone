@@ -34,3 +34,9 @@ class Restaurant(Base):
         back_populates="restaurant",
         cascade="all, delete-orphan")
     
+    order=relationship(
+        "Order",
+        back_populates="restaurant",
+        cascade="all, delete-orphan"
+    )
+    

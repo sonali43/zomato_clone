@@ -16,10 +16,11 @@ class RestaurantRepo:
             location = location 
         )
         
-        try:
+        try: 
             self.db.add(restaurant)
             self.db.commit()
             self.db.refresh(restaurant)
+            return restaurant
         except Exception as e:
             self.db.rollback()
             raise ValueError("Internal Error")

@@ -16,12 +16,16 @@ class Order(Base):
         ForeignKey("users.id"),index=True
     )
     
+    restaurant_id:Mapped[int]=mapped_column(
+        ForeignKey("restaurant.id"),index=True
+    )
+    
     total_price :Mapped[Float]=mapped_column(
         Float,nullable=True
     )
     
-    status : Mapped[bool]=mapped_column(
-        Enum(OrderStatus),default=OrderStatus.PENDING,nullable=True
+    status : Mapped[OrderStatus]=mapped_column(
+        Enum(OrderStatus)
     )
     
     created_at :Mapped[datetime]=mapped_column(
@@ -30,5 +34,10 @@ class Order(Base):
     
     users = relationship(
         "User",
+        back_populates="order"
+    )
+    
+    restaurant = relationship(
+        "Restaurant",
         back_populates="order"
     )

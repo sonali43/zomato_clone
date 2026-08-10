@@ -8,6 +8,8 @@ from app.service.cart_service import CartService
 from app.repo.cart_repo import CartRepository
 from app.service.cartitem_service import CartItemService
 from app.repo.cartitem_repo import CartItemRepository
+from app.repo.order_repo import OrderRepository
+from app.service.order_service import OrderService
 
 def get_restaurant_service(db=Depends(get_db)):
     restaurant_repository = RestaurantRepo(db)
@@ -28,3 +30,8 @@ def get_cartitem_service(db=Depends(get_db)):
     cartitem_repository = CartItemRepository(db)
     cartitem_service = CartItemService(cartitem_repository)
     return cartitem_service
+
+def get_order_service(db=Depends(get_db)):
+    order_repository = OrderRepository(db)
+    order_service = OrderService(order_repository)
+    return order_service
