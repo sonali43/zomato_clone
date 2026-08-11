@@ -43,3 +43,9 @@ class Food(Base):
         back_populates="food",
         cascade="all, delete-orphan"
     )
+    
+    orderitem = relationship(
+        "OrderItem",
+        back_populates="food",
+        cascade="all, delete-orphan"
+    )
