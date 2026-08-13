@@ -6,7 +6,7 @@ from app.db.database import get_db
 
 food_router = APIRouter(prefix="/food", tags=["Food"])
 
-@food_router.post("/create-food")
+@food_router.post("/create_food")
 def create_food(create_food:CreateFood, restaurant_id:int,foodservice=Depends(get_food_service)):
     food = foodservice.create_food(create_food, restaurant_id)
     return {"message":"Food created successfully","food":food}
