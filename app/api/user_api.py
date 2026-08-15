@@ -2,13 +2,19 @@ from fastapi import APIRouter, HTTPException,Depends
 from sqlalchemy.orm import Session
 from app.service.user_service import user_service
 from app.db.database import get_db
+from app.core.logger_config import logger
 
 user_router = APIRouter()
 
 @user_router.post("/users")
 async def create_user(id: int, username: str, email:str, age: int,db:Session=Depends(get_db)):
-    user = user_service.create_user(id, username, email, age,db=db)
-    return {"message": "user create successfully","user":user.__dict__}
+    logger.info(f"Creating user with ID:{email}")
+    try:
+        user = user_service.create_user(id, username, email, age,db=db)
+    except Exception as e:
+        logger.debug(f"User wiith {id} is create in db")
+        raise HTTPException(status_code=409, detail="User already Exist")
+    return user
 
 @user_router.get("/user/{user_id}")
 async def get_user(user_id: int):
