@@ -17,4 +17,19 @@ class UserRepository:
             logger.error(f"Record can't create{e}")
             raise ValueError("Database error")
         return user
+    
+    def get_user_by_id(Self,user_id:int,db:Session):
+        try:
+            user=db.query(Users).filter(Users.id == user_id).first()
+            
+        except Exception as e:
+            logger.info("error")
+            raise ValueError("User not found")
+        return user
+    
+    def get_user_by_email(self,user_email:str, db:Session):
+        user = db.query(Users).filter(Users.email== user_email).first()
+        return user
+    
+    
 user_repo= UserRepository()
