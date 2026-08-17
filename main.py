@@ -10,6 +10,9 @@ from app.api.cart_api import cart_router
 from app.api.cartitem_api import cartitem_router
 from app.api.order_api import order_router
 from app.api.orderitem_api import orderitem_router
+from app.custom_exception.app_exception import AppException
+from fastapi.exceptions import RequestValidationError
+from app.custom_exception.exception_handler import app_exception_handler,generic_exception_handler,validation_exception_handler
 
 
 app = FastAPI()
@@ -21,6 +24,18 @@ app.include_router(cart_router)
 app.include_router(cartitem_router)
 app.include_router(order_router)
 app.include_router(orderitem_router)
+app.add_exception_handler(
+    AppException,
+    app_exception_handler
+)
+app.add_exception_handler(
+    Exception,
+    generic_exception_handler
+)
+app.add_exception_handler(
+    RequestValidationError,
+    validation_exception_handler
+)
 Base.metadata.create_all(bind=engine)
 
 @app.get("/")
