@@ -5,31 +5,33 @@ from app.core.logger_config import logger
 
 class UserRepository:
     
+    def __init__(self,db_session:Session):
+        self.db_session =db_session
     
-    def created_user(self, user:Users , db_session:Session):
+    def created_user(self, user:Users):
+        
         try:
             
-            db_session.add(user)
-            db_session.commit()
-            db_session.refresh(user)
+            self.db_session.add(user)
+            self.db_session.commit()
+            self.db_session.refresh(user)
             logger.info("Record for user is create")
         except Exception as e:
             logger.error(f"Record can't create{e}")
             raise ValueError("Database error")
         return user
     
-    def get_user_by_id(Self,user_id:int,db:Session):
+    def get_user_by_id(self,user_id:int):
         try:
-            user=db.query(Users).filter(Users.id == user_id).first()
+            user=self.db_session.query(Users).filter(Users.id == user_id).first()
             
         except Exception as e:
             logger.info("error")
             raise ValueError("User not found")
         return user
     
-    def get_user_by_email(self,user_email:str, db:Session):
-        user = db.query(Users).filter(Users.email== user_email).first()
+    def get_user_by_email(self,user_email:str):
+        user = self.db_session.query(Users).filter(Users.email== user_email).first()
         return user
     
     
-user_repo= UserRepository()

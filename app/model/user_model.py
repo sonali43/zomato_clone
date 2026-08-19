@@ -11,12 +11,13 @@ class User(Base):
     __tablename__ = "users"
     
     id:Mapped[int]= mapped_column(
-        Integer, primary_key=True, index=True
+        Integer, primary_key=True, index=True,autoincrement=True
     )
     
     username : Mapped[str] =mapped_column(
         String(220), unique=True,nullable=False
     )
+    
     
     email :Mapped[str]= mapped_column(
         String(255), unique=True,index=True, nullable=False
@@ -28,6 +29,7 @@ class User(Base):
     
     created_at : Mapped[datetime] =mapped_column(
         DateTime, default=datetime.now)
+    
     
     cart=relationship(
         "Cart",

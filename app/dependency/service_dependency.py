@@ -12,11 +12,18 @@ from app.repo.order_repo import OrderRepository
 from app.service.order_service import OrderService
 from app.repo.orderitem_repo import OrderItemRepository
 from app.service.orderitem_service import OrderItemService
+from app.service.user_service import UserService
+from app.repo.user_repo import UserRepository
 
 def get_restaurant_service(db=Depends(get_db)):
     restaurant_repository = RestaurantRepo(db)
     restaurant_service = RestaurantService(restaurant_repository)
     return restaurant_service
+
+def get_user_service(db=Depends(get_db)):
+    user_repository = UserRepository(db)
+    user_service =UserService(user_repository)
+    return user_service
 
 def get_food_service(db= Depends(get_db)):
     food_repository = FoodRepository(db)
