@@ -17,7 +17,9 @@ class User(Base):
     username : Mapped[str] =mapped_column(
         String(220), unique=True,nullable=False
     )
-    
+    password : Mapped[str] = mapped_column(
+        String(220),nullable=True
+    )
     
     email :Mapped[str]= mapped_column(
         String(255), unique=True,index=True, nullable=False
