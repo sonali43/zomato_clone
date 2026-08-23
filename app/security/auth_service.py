@@ -21,4 +21,4 @@ def verify_access_token(self,token):
         permissions=permissions,
     )
     
-    raise 
+    raise verify_access_token
