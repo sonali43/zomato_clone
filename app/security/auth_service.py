@@ -23,3 +23,15 @@ def verify_access_token(self,token):
     
     raise verify_access_token
 
+def decode_auth_token(auth_token : str):
+    try:
+        payload = jwt.decode(auth_token,
+                             SECRET_KEY,
+                             algorithms=ALGORITHM)
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+    except jwt.PyJWTError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+    
+    logger.info(f"user with {auth_token} has this {payload}")
+    return payload
