@@ -23,16 +23,7 @@ def verify_access_token(self,token):
     
     raise verify_access_token
 
-def generate_token(user_id :int):
-    user_id = str(user_id)
-    payload = {
-        "user_id" : user_id,
-        "exp":datetime.datetime.now(timezone.utc) + datetime.timedelta(minutes=60),
-    }
-    
-    token = jwt.encode(payload,SECRET_KEY,algorithm=ALGORITHM)
-    logger.info(f"user with {user_id} has this {token}")
-    return token
+
 
 def decode_auth_token(auth_token : str):
     try:
