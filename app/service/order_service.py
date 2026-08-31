@@ -1,13 +1,20 @@
 from app.model.order_model import Order
+from sqlalchemy.orm import Session
 from app.repo.order_repo import OrderRepository
 from app.schema.order_schema import CreateOrder
+from app.schema.orderitem_schema import CreateOrderItem
+from app.repo.orderitem_repo import OrderItemRepository
+
 
 class OrderService:
-    def __init__(self,orderrepo:OrderRepository):
+    def __init__(self,orderrepo:OrderRepository,orderitemrepo:OrderItemRepository,db:Session):
         self.order_repo:OrderRepository=orderrepo
+        self.orderitem_repo:OrderItemRepository=orderitemrepo
+        self.db=db
         
+    
     def create_order(self,create_order:CreateOrder):
-        return self.order_repo.create_order_repo(create_order)
+       
     
     def  get_order_by_id(self,order_id:int):
         return self.order_repo.create_order_repo(order_id)
@@ -17,3 +24,5 @@ class OrderService:
     
     def get_order_by_restaurant_id(self,restaurant_id:int):
         return self.order_repo.create_order_repo(restaurant_id)
+    
+    

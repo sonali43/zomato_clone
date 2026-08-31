@@ -15,14 +15,10 @@ class OrderItemRepository:
             quantity=create_order_item.quantity,
             price=create_order_item.price
         )
-        try:
-            self.db_session.add(order_item)
-            self.db_session.commit()
-            self.db_session.refresh(order_item)
-            return order_item
-        except Exception as e:
-            self.db_session.rollback()
-            raise ValueError(str(e))
+        
+        self.db_session.add(order_item)
+        self.db_session.flush()
+        return order_item
         
     def get_order_item_by_order_id(self, order_id:int):
         orderitem=self.db_session.query(OrderItem).filter(OrderItem.order_id==order_id).first()

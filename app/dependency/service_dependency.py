@@ -11,9 +11,9 @@ from app.repo.cartitem_repo import CartItemRepository
 from app.repo.order_repo import OrderRepository
 from app.service.order_service import OrderService
 from app.repo.orderitem_repo import OrderItemRepository
-from app.service.orderitem_service import OrderItemService
 from app.service.user_service import UserService
 from app.repo.user_repo import UserRepository
+from app.security.auth_service import AuthService
 
 def get_restaurant_service(db=Depends(get_db)):
     restaurant_repository = RestaurantRepo(db)
@@ -42,10 +42,10 @@ def get_cartitem_service(db=Depends(get_db)):
 
 def get_order_service(db=Depends(get_db)):
     order_repository = OrderRepository(db)
-    order_service = OrderService(order_repository)
+    orderitem_repository = OrderItemRepository(db)
+    order_service = OrderService(order_repository, orderitem_repository,db)
     return order_service
 
-def get_orderitem_service(db=Depends(get_db)):
-    orderitem_repository = OrderItemRepository(db)
-    orderitem_service = OrderItemService(orderitem_repository)
-    return orderitem_service
+def get_auth_service(db = Depends(get_db)):
+    user_auth_service = AuthService(UserRepository(db))
+    return user_auth_service

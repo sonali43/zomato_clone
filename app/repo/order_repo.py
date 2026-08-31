@@ -13,14 +13,11 @@ class OrderRepository:
             status=create_order.status,
             restaurant_id=create_order.restaurant_id
         )
-        try:
-            self.db_session.add(order)
-            self.db_session.commit()
-            self.db_session.refresh(order)
-            return order
-        except Exception as e:
-            self.db_session.rollback()
-            raise ValueError(str(e))
+       
+        self.db_session.add(order)
+        self.db_session.flush()
+        return order
+        
     def get_order_by_id(self,order_id:int):
         order=self.db_session.querry(Order).filter(Order.id==order_id).first()
         return order

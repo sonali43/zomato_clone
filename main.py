@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.routing import APIRoute
 from app.db.database import get_db, Base, engine
 from app.model.user_model import User
@@ -11,6 +11,7 @@ from app.api.cartitem_api import cartitem_router
 from app.api.order_api import order_router
 from app.api.orderitem_api import orderitem_router
 from app.custom_exception.app_exception import AppException
+from app.security.auth_dependency import auth_dependency
 from fastapi.exceptions import RequestValidationError
 from app.custom_exception.exception_handler import app_exception_handler,generic_exception_handler,validation_exception_handler
 
@@ -19,7 +20,7 @@ app = FastAPI()
 
 app.include_router(user_router)
 app.include_router(restaurant_router)
-app.include_router(food_router)
+app.include_router(food_router,dependencies=[Depends(auth_dependency)])
 app.include_router(cart_router)
 app.include_router(cartitem_router)
 app.include_router(order_router)

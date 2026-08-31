@@ -1,6 +1,8 @@
+from fastapi.params import Depends
 from app.model.user_model import User as Users
 from sqlalchemy.orm import Session
 from app.core.logger_config import logger
+from app.db.database import get_db
 
 
 class UserRepository:
