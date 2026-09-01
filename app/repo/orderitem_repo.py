@@ -1,15 +1,15 @@
 from sqlalchemy.orm import Session
 from app.model.orderitem_model import OrderItem
-from app.schema.orderitem_schema import CreateOrderItem
+from app.schema.order_schema import CreateOrderItem
 
 class OrderItemRepository:
     
     def __init__(self,db_session: Session):
         self.db_session = db_session
         
-    def create_order_item_repo(self,create_order_item:CreateOrderItem):
+    def create_order_item_repo(self,create_order_item:CreateOrderItem,order_id:int):
         order_item=OrderItem(
-            order_id=create_order_item.order_id,
+            order_id=order_id,
             restaurant_id =create_order_item.restaurant_id,
             food_id=create_order_item.food_id,
             quantity=create_order_item.quantity,
