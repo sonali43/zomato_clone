@@ -18,4 +18,9 @@ def create_food(create_food:CreateFood, restaurant_id:int,foodservice=Depends(ge
 def get_food_by_restaurant_id(restaurant_id:int,foodservice=Depends(get_food_service)):
     logger.info("get-food-by-restaurant api started")
     food_items= foodservice.get_food_by_restaurant_id(restaurant_id)
-    return {"food_items":food_items}
+    if not food_items:
+        raise HTTPException(
+            status_code=404,detail="food not found by this id"
+        )
+    
+    return food_items

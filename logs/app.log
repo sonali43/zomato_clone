@@ -140,3 +140,313 @@ Traceback (most recent call last):
 TypeError: UserRepository.get_user_by_id() missing 1 required positional argument: 'db'
 2026-08-19 17:38:34,769 | INFO | app | Getting user from token
 2026-08-19 17:38:34,770 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4NzE0MzA3MX0.RSZAL7OjGDc0VA0FR95fDW6u0RNtcVdBeSsvR_egJ3Q has this {'user_id': '2', 'exp': 1787143071}
+2026-09-01 17:28:50,734 | INFO | app | user with 2 has this eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODI2NzUzMH0.qboIgIoLy9IdRdapYXSWM97LmEcFzpyRhFFl9Ul2MJs
+2026-09-01 17:30:27,469 | ERROR | app | Unhandled exception | /food/get-food-by-restaurant-id
+Traceback (most recent call last):
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2692, in app
+    await route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1773, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2747, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1793, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1272, in handle
+    await app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 156, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 142, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 479, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\dependencies\utils.py", line 716, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\security\auth_dependency.py", line 26, in auth_dependency
+    auth_cntx = auth_service.verify_user_token(token)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AuthService' object has no attribute 'verify_user_token'. Did you mean: 'create_user_token'?
+2026-09-02 17:50:10,239 | INFO | app | user with 2 has this eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NTIxMH0.dzgqN6BihtbeWfV9tlySSFvB9F8qJPv1M_VcxH67klE
+2026-09-02 17:50:53,806 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NTIxMH0.dzgqN6BihtbeWfV9tlySSFvB9F8qJPv1M_VcxH67klE has this {'user_id': '2', 'exp': 1788355210}
+2026-09-02 17:50:53,811 | INFO | app | user request url: http://127.0.0.1:8000/food/get-food-by-restaurant-id?restaurant_id=2
+2026-09-02 17:50:53,815 | INFO | app | get-food-by-restaurant api started
+2026-09-02 17:50:53,848 | ERROR | app | Unhandled exception | /food/get-food-by-restaurant-id
+Traceback (most recent call last):
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2692, in app
+    await route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1773, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2747, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1793, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1272, in handle
+    await app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 156, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 142, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 698, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 352, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\api\food_api.py", line 25, in get_food_by_restaurant_id
+    user_id=request.state.auth
+            ^^^^^^^
+NameError: name 'request' is not defined
+2026-09-02 17:56:00,835 | INFO | app | user with 2 has this eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NTU2MH0.hIfvgqEs875Ot2m3Wwt4k7ZOcQyC76AjEVHEIKzvGMI
+2026-09-02 17:56:33,794 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NTU2MH0.hIfvgqEs875Ot2m3Wwt4k7ZOcQyC76AjEVHEIKzvGMI has this {'user_id': '2', 'exp': 1788355560}
+2026-09-02 17:56:33,797 | INFO | app | user request url: http://127.0.0.1:8000/food/get-food-by-restaurant-id?restaurant_id=2
+2026-09-02 17:56:33,802 | INFO | app | get-food-by-restaurant api started
+2026-09-02 17:56:33,811 | ERROR | app | Unhandled exception | /food/get-food-by-restaurant-id
+Traceback (most recent call last):
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2692, in app
+    await route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1773, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2747, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1793, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1272, in handle
+    await app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 156, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 142, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 698, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 352, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\api\food_api.py", line 25, in get_food_by_restaurant_id
+    user_id=Request.state.auth
+            ^^^^^^^^^^^^^^^^^^
+AttributeError: 'property' object has no attribute 'auth'
+2026-09-02 17:57:55,576 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NTU2MH0.hIfvgqEs875Ot2m3Wwt4k7ZOcQyC76AjEVHEIKzvGMI has this {'user_id': '2', 'exp': 1788355560}
+2026-09-02 17:57:55,625 | INFO | app | user request url: http://127.0.0.1:8000/food/get-food-by-restaurant-id?restaurant_id=1
+2026-09-02 17:57:55,625 | INFO | app | get-food-by-restaurant api started
+2026-09-02 17:57:55,635 | ERROR | app | Unhandled exception | /food/get-food-by-restaurant-id
+Traceback (most recent call last):
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2692, in app
+    await route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1773, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2747, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1793, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1272, in handle
+    await app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 156, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 142, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 698, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 352, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\api\food_api.py", line 25, in get_food_by_restaurant_id
+    user_id=Request.state.auth
+            ^^^^^^^^^^^^^^^^^^
+AttributeError: 'property' object has no attribute 'auth'
+2026-09-02 18:01:39,597 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NTU2MH0.hIfvgqEs875Ot2m3Wwt4k7ZOcQyC76AjEVHEIKzvGMI has this {'user_id': '2', 'exp': 1788355560}
+2026-09-02 18:01:39,646 | INFO | app | user request url: http://127.0.0.1:8000/food/get-food-by-restaurant-id?restaurant_id=4
+2026-09-02 18:01:39,648 | INFO | app | get-food-by-restaurant api started
+2026-09-02 18:03:22,101 | INFO | app | user with 2 has this eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NjAwMn0.vyju6G37KZadynSAbVKq1t4Mv-Jn6wwxXnaopkDOZWI
+2026-09-02 18:03:49,613 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NTU2MH0.hIfvgqEs875Ot2m3Wwt4k7ZOcQyC76AjEVHEIKzvGMI has this {'user_id': '2', 'exp': 1788355560}
+2026-09-02 18:03:49,620 | INFO | app | user request url: http://127.0.0.1:8000/food/get-food-by-restaurant-id?restaurant_id=4
+2026-09-02 18:03:49,634 | INFO | app | get-food-by-restaurant api started
+2026-09-02 18:03:55,527 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NTU2MH0.hIfvgqEs875Ot2m3Wwt4k7ZOcQyC76AjEVHEIKzvGMI has this {'user_id': '2', 'exp': 1788355560}
+2026-09-02 18:03:55,528 | INFO | app | user request url: http://127.0.0.1:8000/food/get-food-by-restaurant-id?restaurant_id=2
+2026-09-02 18:03:55,546 | INFO | app | get-food-by-restaurant api started
+2026-09-02 18:03:55,559 | ERROR | app | Unhandled exception | /food/get-food-by-restaurant-id
+Traceback (most recent call last):
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2692, in app
+    await route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1773, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2747, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1793, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1272, in handle
+    await app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 156, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 142, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 698, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 352, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\api\food_api.py", line 25, in get_food_by_restaurant_id
+    user_id=request.state.auth
+            ^^^^^^^
+NameError: name 'request' is not defined. Did you mean: 'Request'?
+2026-09-02 18:04:57,796 | INFO | app | user with 2 has this eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NjA5N30.Yidxp5EFdpm8M6at0tUnZ2aUhdskyXWYyiQyt1_2jaM
+2026-09-02 18:05:43,883 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NjA5N30.Yidxp5EFdpm8M6at0tUnZ2aUhdskyXWYyiQyt1_2jaM has this {'user_id': '2', 'exp': 1788356097}
+2026-09-02 18:05:43,905 | INFO | app | user request url: http://127.0.0.1:8000/food/get-food-by-restaurant-id?restaurant_id=1
+2026-09-02 18:05:43,910 | INFO | app | get-food-by-restaurant api started
+2026-09-02 18:06:43,191 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NjA5N30.Yidxp5EFdpm8M6at0tUnZ2aUhdskyXWYyiQyt1_2jaM has this {'user_id': '2', 'exp': 1788356097}
+2026-09-02 18:06:43,210 | INFO | app | user request url: http://127.0.0.1:8000/food/get-food-by-restaurant-id?restaurant_id=2
+2026-09-02 18:06:43,213 | INFO | app | get-food-by-restaurant api started
+2026-09-02 18:07:05,160 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NjA5N30.Yidxp5EFdpm8M6at0tUnZ2aUhdskyXWYyiQyt1_2jaM has this {'user_id': '2', 'exp': 1788356097}
+2026-09-02 18:07:05,167 | INFO | app | user request url: http://127.0.0.1:8000/food/get-food-by-restaurant-id?restaurant_id=3
+2026-09-02 18:07:05,169 | INFO | app | get-food-by-restaurant api started
+2026-09-02 18:07:13,783 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODM1NjA5N30.Yidxp5EFdpm8M6at0tUnZ2aUhdskyXWYyiQyt1_2jaM has this {'user_id': '2', 'exp': 1788356097}
+2026-09-02 18:07:13,788 | INFO | app | user request url: http://127.0.0.1:8000/food/get-food-by-restaurant-id?restaurant_id=2
+2026-09-02 18:07:13,790 | INFO | app | get-food-by-restaurant api started

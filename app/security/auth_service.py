@@ -19,5 +19,14 @@ class AuthService:
             raise UserNotFoundException("Enter a vaild password")
         user_auth_token = generate_token(user_id=user.id)
         return user_auth_token
+        
+    def verify_user_token(self,token):
+        decode_token=decode_auth_token(token)
+        user=self.user_repo.get_user_by_id(decode_token["user_id"])
+        if user is None:
+            raise UserNotFoundException("User doesn't found")
+        auth_cntx=AuthContext(user_id=user.id)
+        return auth_cntx
+        
 
 
