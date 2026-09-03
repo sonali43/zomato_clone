@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.repo.order_repo import OrderRepository
 from app.schema.order_schema import CreateOrder, CreateOrderItem
 from app.repo.orderitem_repo import OrderItemRepository
+from app.core.logger_config import logger
 
 
 class OrderService:
@@ -12,16 +13,23 @@ class OrderService:
         self.db=db
         
     
-    def create_order(self,create_order:CreateOrder):
+    def create_order(self,create_order:CreateOrder,user_id:int):
+        total_price=0
         try:
-            order=self.order_repo.create_order_repo(create_order=create_order)
+            order=self.order_repo.create_order_repo(create_order=create_order,user_id=user_id,total_price=0)
+            logger.info(f"order:{order.id}")
             for order_item in create_order.order_items:
+                price=order_item.price*order_item.quantity
+                total_price=total_price+price
+                logger.info(f"food name:{order_item.food_id},price:{price},total_price:{total_price}")
                 self.orderitem_repo.create_order_item_repo(create_order_item=order_item, order_id=order.id)
+                
             self.db.commit()
             return order
         except Exception as e:
             self.db.rollback()
-            raise ValueError("try later")
+            raise e
+        
        
     
     def  get_order_by_id(self,order_id:int):

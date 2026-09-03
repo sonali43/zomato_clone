@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException,Depends
+from fastapi import APIRouter, HTTPException,Depends,Request
 from app.core.logger_config import logger
 from sqlalchemy.orm import Session
 from app.dependency.service_dependency import  get_food_service
@@ -15,12 +15,15 @@ def create_food(create_food:CreateFood, restaurant_id:int,foodservice=Depends(ge
     food = foodservice.create_food(create_food, restaurant_id)
     return {"message":"Food created successfully","food":food}
 @food_router.get("/get-food-by-restaurant-id")
-def get_food_by_restaurant_id(restaurant_id:int,foodservice=Depends(get_food_service)):
+def get_food_by_restaurant_id(restaurant_id:int,request:Request,foodservice=Depends(get_food_service)):
     logger.info("get-food-by-restaurant api started")
     food_items= foodservice.get_food_by_restaurant_id(restaurant_id)
     if not food_items:
         raise HTTPException(
             status_code=404,detail="food not found by this id"
         )
+    
+    user_auth=request.state.auth
+    logger.info(f"user has this id :{user_auth.user_id}")
     
     return food_items

@@ -8,8 +8,6 @@ class CreateOrderItem(BaseModel):
     price : float
     
 class CreateOrder(BaseModel):
-    user_id : int
-    total_price : float
     restaurant_id : int
     status : OrderStatus
     order_items : list[CreateOrderItem]

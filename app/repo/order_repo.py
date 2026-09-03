@@ -6,10 +6,10 @@ class OrderRepository:
     def __init__(self,db_session:Session):
         self.db_session = db_session
         
-    def create_order_repo(self,create_order:CreateOrder):
+    def create_order_repo(self,create_order:CreateOrder,user_id:int,total_price:float|None):
         order=Order(
-            user_id=create_order.user_id,
-            total_price=create_order.total_price,
+            user_id=user_id,
+            total_price=total_price,
             status=create_order.status,
             restaurant_id=create_order.restaurant_id
         )
