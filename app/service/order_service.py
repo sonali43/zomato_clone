@@ -17,12 +17,12 @@ class OrderService:
         total_price=0
         try:
             order=self.order_repo.create_order_repo(create_order=create_order,user_id=user_id,total_price=0)
-            logger.info(f"order:{order.id}")
-            for order_item in create_order.order_items:
-                price=order_item.price*order_item.quantity
-                total_price=total_price+price
-                logger.info(f"food name:{order_item.food_id},price:{price},total_price:{total_price}")
-                self.orderitem_repo.create_order_item_repo(create_order_item=order_item, order_id=order.id)
+            # logger.info(f"order:{order.id}")
+            # for order_item in create_order.order_items:
+            #     price=order_item.price*order_item.quantity
+            #     total_price=total_price+price
+            logger.info(f"food name:{order_item.food_id},price:{price},total_price:{total_price}")
+            self.orderitem_repo.create_order_item_repo(create_order_item=order_item, order_id=order.id)
                 
             self.db.commit()
             return order
