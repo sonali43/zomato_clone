@@ -19,7 +19,7 @@ class OrderRepository:
         return order
         
     def get_order_by_id(self,order_id:int):
-        order=self.db_session.querry(Order).filter(Order.id==order_id).first()
+        order=self.db_session.query(Order).filter(Order.id==order_id).first()
         return order
     
     def get_order_by_restaurant_id(self,restaurant_id:int):
