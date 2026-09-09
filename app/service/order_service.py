@@ -39,6 +39,6 @@ class OrderService:
         return self.order_repo.create_order_repo(user_id)
     
     def get_order_by_restaurant_id(self,restaurant_id:int):
-        return self.order_repo.create_order_repo(restaurant_id)
+        return self.order_repo.get_order_by_restaurant_id(restaurant_id)
     
     
