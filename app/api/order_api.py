@@ -12,7 +12,12 @@ def create_order(create_order:CreateOrder,request:Request,orderservice=Depends(g
     return {"message":"order created successfully","order":order}
     
 
-@order_router.get("/get-order-by-restaurant-id")
+@order_router.get("/get-order-by-user-id")
+def get_order_by_user_id(user_id:int,orderservice=Depends(get_order_service)):
+    order= orderservice.get_order_by_user_id(user_id)
+    return {"order":order}
+
+@order_router.get("/get-order-by-user_")
 def get_food_by_restaurant_id(restaurant_id:int,orderservice=Depends(get_order_service)):
     order= orderservice.get_order_by_restaurant_id(restaurant_id)
     return {"order":order}
