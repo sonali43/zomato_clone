@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from app.model.cartitem_model import CartItem
-from app.schema.cartitem_schema import CreatCartItem
+from app.schema.cart_schema import CreatCartItem
 
 class CartItemRepository:
     
@@ -11,7 +11,8 @@ class CartItemRepository:
         cart_item=CartItem(
             cart_id=create_cart_item.cart_id,
             food_id=create_cart_item.food_id,
-            quantity=create_cart_item.quantity
+            quantity=create_cart_item.quantity,
+            cart_status=create_cart_item.cart_status
         )
         try:
             self.db_session.add(CartItem)

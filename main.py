@@ -7,7 +7,6 @@ from app.api.user_api import user_router
 from app.api.restaurant_router import router as restaurant_router
 from app.api.food_api import food_router
 from app.api.cart_api import cart_router
-from app.api.cartitem_api import cartitem_router
 from app.api.order_api import order_router
 from app.custom_exception.app_exception import AppException
 from app.security.auth_dependency import auth_dependency
@@ -21,7 +20,6 @@ app.include_router(user_router)
 app.include_router(restaurant_router)
 app.include_router(food_router,dependencies=[Depends(auth_dependency)])
 app.include_router(cart_router)
-app.include_router(cartitem_router)
 app.include_router(order_router,dependencies=[Depends(auth_dependency)])
 app.add_exception_handler(
     AppException,

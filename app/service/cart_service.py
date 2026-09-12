@@ -1,9 +1,13 @@
 from app.repo.cart_repo import CartRepository
+from app.repo.cartitem_repo import CartItemRepository
 from app.model.cart_model import Cart
 from app.schema.cart_schema import CreateCart
+
+
 class CartService:
-    def __init__(self, cartrepo:CartRepository):
+    def __init__(self, cartrepo:CartRepository, cart_item_repo : CartItemRepository):
         self.cart_repo: CartRepository =cartrepo
+        self.cartitem_repo: CartItemRepository=cart_item_repo
         
     def create_cart(self,create_cart:CreateCart):
         return self.cart_repo.create_cart_repo(create_cart)

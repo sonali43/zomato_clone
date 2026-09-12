@@ -1,8 +1,9 @@
 from datetime  import datetime, date,time
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import relationship
-from sqlalchemy import ForeignKey,Integer,Date,Float
+from sqlalchemy import ForeignKey,Integer,Date,Float,Enum
 from app.db.database import Base
+from app.enums.cart_status import CartStatus
 
 class Cart(Base):
     __tablename__ = "cart"
@@ -22,7 +23,9 @@ class Cart(Base):
     total_price:Mapped[float]=mapped_column(
         Float,nullable=True
     )
-    
+    cart_status:Mapped[CartStatus]=mapped_column(
+        Enum(CartStatus)
+    )
     
     users=relationship(
         "User",
