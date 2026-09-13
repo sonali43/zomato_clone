@@ -11,5 +11,7 @@ class FoodService:
         return self.food_repo.create_food_repo(create_food, restaurant_id)
     def get_food_by_restaurant_id(self, restaurant_id:int):
         return self.food_repo.get_food_by_restaurant_id(restaurant_id)
+    def get_food_by_name(self,name:str):
+        return self.food_repo.get_food_by_name(name)
     
     
