@@ -9,7 +9,7 @@ order_router=APIRouter(prefix="/order",tags=["Order"])
 def create_order(create_order:CreateOrder,request:Request,orderservice=Depends(get_order_service)):
     user_id=request.state.auth.user_id
     order=orderservice.create_order(create_order,user_id=user_id)
-    return {"message":"order created successfully","order":order}
+    return {"order":order}
     
 
 @order_router.get("/get-order-by-user-id")
