@@ -15,4 +15,4 @@ def create_cart(create_cart:CreateCart, request=Request,cartservice =Depends(get
 @cart_router.get("/get-cart-by-user-id")
 def get_cart_by_user_id(user_id:int,cartservice=Depends(get_cart_service)):
     cart= cartservice.get_cart_by_user_id(user_id)
-    return {"cart":cart}
+    return {cart}
