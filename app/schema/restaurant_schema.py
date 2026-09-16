@@ -1,11 +1,11 @@
 from pydantic import BaseModel, EmailStr
-from typing import Optional
-
 
 class CreateRestaurantRequest(BaseModel):
     name: str
     location: str
+    address :str
     email: EmailStr
+    phone: str
     
 class RestaurantResponse(BaseModel):
     name: str
