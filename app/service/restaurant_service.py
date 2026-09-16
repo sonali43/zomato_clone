@@ -35,8 +35,8 @@ class RestaurantService:
             location = restaurant_data.location
         )
         
-    def update_restaurant(self,restaurant_id, restaurant_data):
-        return
+    # def update_restaurant(self,restaurant_id, restaurant_data):
+    #     return
         
-    def delete_restaurant(Self, restaurant_id):
-        return
+    # def delete_restaurant(Self, restaurant_id):
+    #     return
