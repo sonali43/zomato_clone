@@ -2,7 +2,7 @@ from datetime import datetime, date, time
 from app.db.database import Base
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.orm import relationship
-from sqlalchemy import Integer,String,Date
+from sqlalchemy import Integer,String,Date,Boolean
 
 class Restaurant(Base):
     __tablename__ ="restaurant"
@@ -16,8 +16,17 @@ class Restaurant(Base):
     name : Mapped[str] = mapped_column(
         String(255), unique=True
     )
+    phone: Mapped[str] = mapped_column(
+        String(15),nullable=False
+    )
     location : Mapped[str] = mapped_column(
         String(255)
+    )
+    address: Mapped[str]=mapped_column(
+        String(255),nullable=True
+    )
+    is_open:Mapped[bool]=mapped_column(
+        Boolean,default=True
     )
     rating : Mapped[int] = mapped_column(
         Integer,nullable=True
