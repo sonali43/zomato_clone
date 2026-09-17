@@ -20,6 +20,6 @@ class RestaurantResponse(BaseModel):
 class RestaurantListResponse(BaseModel):
     restaurants : list[RestaurantResponse]
     
-    class Config:
-        orm_mode =True
+    # class Config:
+    #     orm_mode =True
         
