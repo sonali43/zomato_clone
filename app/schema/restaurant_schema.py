@@ -13,13 +13,13 @@ class RestaurantResponse(BaseModel):
     email:str
     rating : int | None
     
-    # class Config:
-    #     orm_mode =True
+    class Config:
+        orm_mode =True
         
         
 class RestaurantListResponse(BaseModel):
     restaurants : list[RestaurantResponse]
     
-    # class Config:
-    #     orm_mode =True
+    class Config:
+        orm_mode =True
         
