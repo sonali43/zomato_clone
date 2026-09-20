@@ -9,10 +9,12 @@ class RestaurantRepo:
     def __init__(self, db:Session):
         self.db = db
         
-    def create_restaurant(self, name: str, email_input : str, location : str):
+    def create_restaurant(self, name: str, email_input : str, location : str, phone : str , address : str):
         restaurant=Restaurant(
             email =email_input,
             name = name,
+            phone = phone,
+            address = address,
             location = location 
         )
         
