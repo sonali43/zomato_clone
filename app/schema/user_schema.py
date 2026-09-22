@@ -11,5 +11,5 @@ class UserCreateResponse(BaseModel):
     email : EmailStr
     age :int
 
-    # class Config:
-    #     orm_mode = True
+    class Config:
+       orm_mode = True
