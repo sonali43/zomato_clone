@@ -43,3 +43,9 @@ class User(Base):
         "Order",
         back_populates="users"
     )
+    
+    address = relationship(
+        "Address",
+        back_populates="user",
+        cascade="all , delete-orphan"
+    )
