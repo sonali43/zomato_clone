@@ -34,3 +34,10 @@ class AddressRepository:
     def get_address_by_user_id(self,user_id:int):
         address=self.db_session.query(Address).filter(Address.user_id==user_id).all()
         return address
+    
+    def update_address(self,address_id:int,address:UpdateAddress):
+        existing_address=self.db_session.query(Address).filter(Address.id==address_id).first()
+        if existing_address is None:
+            return None
+        if existing_address is not None:
+            
