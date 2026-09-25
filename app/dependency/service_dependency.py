@@ -12,6 +12,8 @@ from app.service.order_service import OrderService
 from app.repo.orderitem_repo import OrderItemRepository
 from app.service.user_service import UserService
 from app.repo.user_repo import UserRepository
+from app.repo.address_repo import AddressRepository
+from app.service.address_service import AddressService
 from app.security.auth_service import AuthService
 
 def get_restaurant_service(db=Depends(get_db)):
@@ -40,6 +42,11 @@ def get_order_service(db=Depends(get_db)):
     orderitem_repository = OrderItemRepository(db)
     order_service = OrderService(order_repository, orderitem_repository,db)
     return order_service
+
+def get_address_service(db=Depends(get_db)):
+    address_repository = AddressRepository(db)
+    address_service = AddressService(address_repository,db)
+    return address_service
 
 def get_auth_service(db = Depends(get_db)):
     user_auth_service = AuthService(UserRepository(db))
