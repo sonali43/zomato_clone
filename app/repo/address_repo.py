@@ -27,7 +27,7 @@ class AddressRepository:
             self.db_session.rollback()
             raise ValueError(str(e))
         
-    def get_aadress_by_id(self,address_id:int):
+    def get_address_by_id(self,address_id:int):
         address=self.db_session.query(Address).filter(Address.id==address_id).first()
         return address
     

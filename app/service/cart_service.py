@@ -1,6 +1,5 @@
 from app.repo.cart_repo import CartRepository
 from app.repo.cartitem_repo import CartItemRepository
-from app.model.cart_model import Cart
 from app.schema.cart_schema import CreateCart
 
 
