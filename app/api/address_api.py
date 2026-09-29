@@ -4,6 +4,6 @@ from app.dependency.service_dependency import get_address_service
 from app.db.database import get_db
 from sqlalchemy.orm import Session
 
-address_router=APIRouter(prefix="/address",tags=["address"])
+# address_router=APIRouter(prefix="/address",tags=["address"])
 
-@address_router.post("/create_address")
+# @address_router.post("/create_address")
