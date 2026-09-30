@@ -11,17 +11,17 @@ class AddressService:
     def create_address_service(self, create_address:AddressSchema):
         return self.address_repo.create_address_repo(create_address)
 
-    def get_address_by_id_service(self, address_id: int):
+    def get_address_by_id(self, address_id: int):
         address = self.address_repo.get_address_by_id(address_id)
 
         if address is None:
             raise ValueError("Address not found")
         return address
 
-    def get_address_by_user_id_service(self, user_id: int):
+    def get_address_by_user_id(self, user_id: int):
         return self.address_repo.get_address_by_user_id(user_id)
 
-    def update_address_service(self,address_id: int,update_address: UpdateAddress):
+    def update_address(self,address_id: int,update_address: UpdateAddress):
         address = self.address_repo.get_address_by_id(address_id)
 
         if address is None:
@@ -29,7 +29,7 @@ class AddressService:
 
         return self.address_repo.update_address(address,update_address)
 
-    def delete_address_service(self, address_id: int):
+    def delete_address(self, address_id: int):
         address = self.address_repo.get_address_by_id(address_id)
 
         if address is None:
