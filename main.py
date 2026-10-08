@@ -8,6 +8,7 @@ from app.api.restaurant_router import router as restaurant_router
 from app.api.food_api import food_router
 from app.api.cart_api import cart_router
 from app.api.order_api import order_router
+from app.api.address_api import address_router
 from app.custom_exception.app_exception import AppException
 from app.security.auth_dependency import auth_dependency
 from fastapi.exceptions import RequestValidationError
@@ -21,6 +22,7 @@ app.include_router(restaurant_router)
 app.include_router(food_router,dependencies=[Depends(auth_dependency)])
 app.include_router(cart_router,dependencies=[Depends(auth_dependency)])
 app.include_router(order_router,dependencies=[Depends(auth_dependency)])
+app.include_router(address_router)
 app.add_exception_handler(
     AppException,
     app_exception_handler
