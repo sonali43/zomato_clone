@@ -186,3 +186,231 @@ Traceback (most recent call last):
 TypeError: OrderRepository.create_order_repo() missing 2 required positional arguments: 'user_id' and 'total_price'
 2026-09-09 18:43:51,974 | INFO | app | user with eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMiIsImV4cCI6MTc4ODk2Mjg1Nn0.-u2o-DFdkXbl7orRHpLawG-c-unXTYiAn3C_vlS3V0o has this {'user_id': '2', 'exp': 1788962856}
 2026-09-09 18:43:52,007 | INFO | app | user request url: http://127.0.0.1:8000/order/get-order-by-restaurant-id?restaurant_id=1
+2026-10-26 17:39:33,551 | ERROR | app | Unhandled exception | /address/create_address
+Traceback (most recent call last):
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2692, in app
+    await route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1773, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2747, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1793, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1272, in handle
+    await app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 156, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 142, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 479, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\dependencies\utils.py", line 716, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\dependency\service_dependency.py", line 48, in get_address_service
+    address_service = AddressService(address_repository,db)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AddressService.__init__() takes 2 positional arguments but 3 were given
+2026-10-26 17:45:04,124 | ERROR | app | Unhandled exception | /address/create_address
+Traceback (most recent call last):
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2692, in app
+    await route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1773, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2747, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1793, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1272, in handle
+    await app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 156, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 142, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 479, in app
+    solved_result = await solve_dependencies(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\dependencies\utils.py", line 716, in solve_dependencies
+    solved = await run_in_threadpool(call, **solved_result.values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\dependency\service_dependency.py", line 48, in get_address_service
+    address_service = AddressService(address_repository,db)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: AddressService.__init__() takes 2 positional arguments but 3 were given
+2026-10-26 18:00:07,864 | ERROR | app | Unhandled exception | /address/create_address
+Traceback (most recent call last):
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2692, in app
+    await route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1773, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2747, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1793, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1272, in handle
+    await app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 156, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 142, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 698, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 352, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\api\address_api.py", line 12, in create_address
+    return service.create_address(create_address)
+           ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AddressService' object has no attribute 'create_address'. Did you mean: 'update_address'?
+2026-10-26 18:03:11,750 | ERROR | app | Unhandled exception | /address/create_address
+Traceback (most recent call last):
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2692, in app
+    await route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1773, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 2747, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1793, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 1272, in handle
+    await app(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 156, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 142, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 698, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\fastapi\routing.py", line 352, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 2641, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\anyio\_backends\_asyncio.py", line 1033, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\api\address_api.py", line 12, in create_address
+    return service.create_address_service(create_address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\service\address_service.py", line 11, in create_address_service
+    return self.address_repo.create_address_repo(create_address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\app\repo\address_repo.py", line 11, in create_address_repo
+    user_id=create_address.user_id,
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\fastAPI\envename\Lib\site-packages\pydantic\main.py", line 1042, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'AddressSchema' object has no attribute 'user_id'

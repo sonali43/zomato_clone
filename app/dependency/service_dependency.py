@@ -45,7 +45,7 @@ def get_order_service(db=Depends(get_db)):
 
 def get_address_service(db=Depends(get_db)):
     address_repository = AddressRepository(db)
-    address_service = AddressService(address_repository,db)
+    address_service = AddressService(address_repository)
     return address_service
 
 def get_auth_service(db = Depends(get_db)):
