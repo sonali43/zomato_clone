@@ -24,5 +24,5 @@ def update_address(update_address:UpdateAddress,service:AddressService=Depends(g
     return service.update_address(update_address)
 
 @address_router.delete("/delete-address",response_model=AddressResponse)
-def delete_address(delete_address:AddressSchema,service=AddressService=Depends(get_address_service)):
+def delete_address(delete_address:AddressSchema,service:AddressService=Depends(get_address_service)):
     return service.delete_address(delete_address)
