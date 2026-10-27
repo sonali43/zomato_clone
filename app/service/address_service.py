@@ -29,4 +29,4 @@ class AddressService:
         if address is None:
             raise ValueError("Address not found")
         self.address_repo.delete_address(address)
-        return {"message": "Address deleted successfully"}
+        return {"Address deleted successfully"}
