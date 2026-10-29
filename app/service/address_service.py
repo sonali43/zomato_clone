@@ -18,7 +18,6 @@ class AddressService:
 
     def update_address(self, address_id: int, update_address: UpdateAddress):
         address = self.address_repo.get_address_by_id(address_id)
-
         if address is None:
             raise ValueError("Address not found")
         return self.address_repo.update_address(address, update_address)
