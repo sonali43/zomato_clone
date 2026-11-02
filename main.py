@@ -17,7 +17,6 @@ app = FastAPI()
 
 app.include_router(user_router)
 app.include_router(restaurant_router)
-app.include_router(address_router)
 app.include_router(food_router,dependencies=[Depends(auth_dependency)])
 app.include_router(cart_router,dependencies=[Depends(auth_dependency)])
 app.include_router(order_router,dependencies=[Depends(auth_dependency)])
